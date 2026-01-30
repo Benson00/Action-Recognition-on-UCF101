@@ -1,0 +1,14 @@
+\section{Conclusions}
+
+This study provided a systematic exploration of Human Action Recognition (HAR) using the UCF101 benchmark, tracking the evolution of architectural paradigms from spatial feature aggregation to advanced attention-based modeling. The objective was to quantify the performance gains associated with increasingly complex temporal reasoning and to evaluate the feasibility of fine-tuning large-scale Transformers in a single-view, efficient inference setting.
+
+\subsection{Summary of Results}
+The experimental results confirm a clear hierarchy of performance aligned with the chronological and technical evolution of computer vision:
+\begin{itemize}
+    \item \textbf{Baseline Performance}: The spatial-only ResNet-50 approach established a performance floor, demonstrating that environment and object recognition provide a significant but incomplete foundation for action understanding.
+    \item \textbf{The Value of Recurrence}: The transition to a bidirectional sequential model (ResNet18-BiLSTM) yielded a test accuracy of \textbf{78.14\%}. This $+7\%$ improvement over standard RGB-only baselines proves that modeling the chronological evolution of movement is essential for distinguishing actions with similar spatial contexts.
+    \item \textbf{Transformer Performance}: The \textbf{VideoMAE-base} architecture achieved the highest performance in this study with a validation accuracy of \textbf{82.76\%}. Despite significant overfitting—evidenced by rapid training saturation—the global self-attention mechanism demonstrated superior capacity in capturing long-range spatiotemporal dependencies compared to recurrent hidden states.
+\end{itemize}
+
+\subsection{Final Considerations}
+The gap between our experimental results ($82.76\%$) and the state-of-the-art benchmarks ($96.1\%$) highlights the critical role of evaluation protocols and regularization. While our study prioritized computational efficiency and single-view feasibility, the literature suggests that peak performance is contingent upon multi-view testing and aggressive data augmentation. Nevertheless, the consistent performance delta across the models validates our incremental methodology and confirms the transition toward attention-based systems as the most effective path for future research.

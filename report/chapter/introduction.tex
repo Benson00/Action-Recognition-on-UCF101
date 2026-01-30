@@ -1,0 +1,51 @@
+\section{Introduction}
+
+
+\subsection{Motivation and Objectives}
+The fundamental challenge in Human Action Recognition (HAR) lies in the effective integration of spatial and temporal information. While deep learning has largely mastered static image classification, video understanding remains complex due to the necessity of interpreting motion over time. This project is motivated by the need to systematically evaluate how different architectural paradigms from simple spatial extractors to complex attention-based models—handle these spatiotemporal demands using the UCF101 benchmark.\\
+The rationale behind our incremental approach is to map the transition from "scene recognition" to "true action understanding" through three distinct phases:
+\begin{enumerate}
+    \item Spatial Baseline: first examine models restricted to spatial features. This stage establishes a performance floor, identifying which actions can be guessed simply by recognizing the environment or objects present in the frames.
+    \item Recurrent Modeling: The goal is to quantify the "value of time" by measuring improvements in classes where the chronological order of movement is the primary identifier.
+    \item Attention Mechanisms: Finally, Transformer-based architectures were implemented to evaluate if attention can capture dependencies more effectively than the hidden states of recurrent networks.
+\end{enumerate}
+Ultimately, this study aims to provide a granular understanding of model behavior. Rather than focusing solely on overall accuracy, I perform a class-level analysis to identify the best and worst performing categories for each model. This allows us to observe which actions are "temporally sensitive" and which are "spatially dominated," providing clear insight into the strengths and limitations of each technological paradigm.
+
+
+\subsection{State Of The Art}
+The evolution of Action Recognition on the UCF101 dataset \cite{soomro2012ucf101} reflects the broader history of computer vision, moving from handcrafted descriptors to deep spatiotemporal architectures.\\
+Table \ref{tab:sota_benchmarks} summarizes the Top-1 accuracy of milestone models on the UCF101 dataset. It is important to note that, for the purpose of this study, I report benchmarks referring exclusively to models utilizing \textbf{RGB input only}.\\
+This focus is motivated by the significant computational overhead and storage requirements associated with the pre-computation of Optical Flow.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcl}
+\toprule
+\textbf{Paradigm} & \textbf{Accuracy (\%)} & \textbf{Reference Model} \\
+\midrule
+Recurrent (LRCN RGB) & 71.1\% & CNN+LSTM \cite{Donahue2015} \\
+TSN (RGB only) & 86.4\% & Temporal Segment Networks \cite{Wang2016} \\
+\textbf{Transformer} & \textbf{96.1\%} & \textbf{VideoMAE (Base)} \cite{Tong2022} \\
+\bottomrule
+\end{tabular}
+\caption{Benchmark performance of different architectural paradigms on the UCF101 dataset (Split-1).}
+\label{tab:sota_benchmarks}
+\end{table}
+
+
+\subsection{Objectives}
+
+The primary objective of this study is to perform a systematic comparative analysis of different neural architectures for Human Action Recognition (HAR), tracking the technological evolution from simple spatial feature aggregation to state-of-the-art attention-based systems. The aim is to quantify the impact of temporal modeling on classification accuracy and identify the specific challenges associated with each paradigm. Specifically, the project pursues the following goals:
+
+\begin{itemize}
+    \item \textbf{Incremental Architectural Evaluation:} Build and train three distinct categories of models to observe the "performance gain" brought by increasingly complex temporal reasoning:
+    \begin{enumerate}
+        \item \textit{Bag of Frames:} To establish a performance floor and measure how much information can be extracted solely from static visual context.
+        \item \textit{Recurrent Architectures} To evaluate the benefit of sequential modeling and hidden state memory in capturing the chronological order of actions.
+        \item \textit{Vision Transformers:} To assess the effectiveness of global self-attention and masked autoencoding in learning high-level spatiotemporal representations.
+    \end{enumerate}
+    
+    \item \textbf{Benchmarking Against State of the Art:} A key goal is to compare our experimental results with the established SOTA performance on the UCF101 dataset. This comparison allows us to validate our implementation and understand how modern pre-training techniques (such as those used in VideoMAE) bridge the gap between theoretical potential and practical accuracy on smaller datasets.
+    
+    \item \textbf{Qualitative and Class-Level Analysis:} Beyond overall accuracy, this study intends to investigate \textit{where} and \textit{why} specific architectures fail. By performing a per-class analysis, the aim is to determine which actions are "temporally sensitive" (requiring sequence knowledge) and which are "spatially dominated" (identifiable via single frames), thereby revealing the strengths and limitations of each technological paradigm.
+\end{itemize}
