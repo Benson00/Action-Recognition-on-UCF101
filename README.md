@@ -11,7 +11,7 @@ A **Computer Vision** and **Deep Learning** project focused on human action reco
 
 | File/Folder | Description |
 | :--- | :--- |
-| `report.pdf` | Detailed project report including methodology and results analysis. |
+| `report_final.pdf` | Detailed project report including methodology and results analysis. |
 | `src/` | Source code: implementations of models, dataset loaders, and training utility functions. |
 | `notebooks` | Jupyter Notebooks used for training, experimentation, and visualization. |
 
