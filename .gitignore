@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Datasets, archives, and extracted frames
+data/
+UCF-101/
+temp_jpg_224/
+ucfTrainTestlist/
+*.zip
+*.rar
+*.avi
+
+# Experiments and model checkpoints
+experiments/
+*.pth
+*.pt
+*.ckpt
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
